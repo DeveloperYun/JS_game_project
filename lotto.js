@@ -18,8 +18,82 @@ while(lotto_number_list.length > 0 ){
 console.log(shuffle);
 
 var bonus_number = shuffle[shuffle.length-1];
-var lotto_number = shuffle.splice(0,6); // 배열의 인덱스 0,1,2,3,4,5까지 추출
+var lotto_number = shuffle
+                .splice(0,6) // 배열의 인덱스 0,1,2,3,4,5까지 추출
+                .sort(function (p,c){return p - c;});
 
 //sort 메소드를 통해서 숫자 정렬(오름차순)
-console.log('당첨 숫자', lotto_number.sort(function (p,c){return p - c;}), '보너스 숫자',bonus_number);
+console.log('당첨 숫자', lotto_number, '보너스 숫자',bonus_number);
 
+//element를 id로 찾기위한 메소드
+var result = document.querySelector('#result'); 
+
+
+//setTimeout은 비동기 콜백함수
+//반복문 내에서 비동기는 closure 되야한다.
+//closure를 적용한 코드는 이후에 리팩토링 하면서 추가하도록 한다.
+//반복문을 쓸 수는 없으므로 함수를 써서 리팩토릭 해보는걸로 만족하자.
+
+// 1초마다 숫자 하나씩 띄우면서 긴장감조성
+
+function ball_style(numb,result_window){
+    var ball = document.createElement('div');
+    ball.textContent = numb;
+
+    //css 코드를 js에서 통제하는 방법 실습
+    ball.style.display = 'inline-block';
+    ball.style.border = '1px solid black';
+    ball.style.borderRadius = '10px';
+    ball.style.width = '20px';
+    ball.style.height = '20px';
+    ball.style.textAlign = 'center';
+    ball.style.marginRight = '5px'
+    ball.style.fontSize = '15px';
+    ball.className = '공 숫자' + numb;
+
+    //공에 색 입히기
+    var back_color;
+    if(numb <= 10){
+        back_color = 'red';
+    }
+    else if(numb <= 20){
+        back_color = 'orange';
+    }
+    else if(numb <= 30){
+        back_color = 'yellow';
+    }
+    else if(numb <= 40){
+        back_color = 'blue';
+    }
+    else{
+        back_color = 'green';
+    }
+    ball.style.background = back_color;
+    result_window.appendChild(ball);
+}
+
+setTimeout(function 콜백함수(){
+    ball_style(lotto_number[0],result);
+}, 1000); // 1000ms = 1s
+setTimeout(function 콜백함수(){
+    ball_style(lotto_number[1],result);
+}, 2000); // 1000ms = 1s
+setTimeout(function 콜백함수(){
+    ball_style(lotto_number[2],result);
+}, 3000); // 1000ms = 1s
+setTimeout(function 콜백함수(){
+    ball_style(lotto_number[3],result);
+}, 4000); // 1000ms = 1s
+setTimeout(function 콜백함수(){
+    ball_style(lotto_number[4],result);
+}, 5000); // 1000ms = 1s
+setTimeout(function 콜백함수(){
+    ball_style(lotto_number[5],result);
+}, 6000); // 1000ms = 1s
+
+
+setTimeout(function 콜백함수(){
+    // bonus number 표시
+    var result_bonus = document.querySelector('.bonus')[0];
+    ball_style(bonus_number,result_bonus);
+}, 7000); // 1000ms = 1s   
