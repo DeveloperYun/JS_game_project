@@ -72,28 +72,17 @@ function ball_style(numb,result_window){
     result_window.appendChild(ball);
 }
 
-setTimeout(function 콜백함수(){
-    ball_style(lotto_number[0],result);
-}, 1000); // 1000ms = 1s
-setTimeout(function 콜백함수(){
-    ball_style(lotto_number[1],result);
-}, 2000); // 1000ms = 1s
-setTimeout(function 콜백함수(){
-    ball_style(lotto_number[2],result);
-}, 3000); // 1000ms = 1s
-setTimeout(function 콜백함수(){
-    ball_style(lotto_number[3],result);
-}, 4000); // 1000ms = 1s
-setTimeout(function 콜백함수(){
-    ball_style(lotto_number[4],result);
-}, 5000); // 1000ms = 1s
-setTimeout(function 콜백함수(){
-    ball_style(lotto_number[5],result);
-}, 6000); // 1000ms = 1s
+for(var i=0; i<lotto_number.length; i++){
+    (function cc(j){
+        setTimeout(function(){
+            ball_style(lotto_number[j], result);
+        }, (j + 1) * 1000);
+    })(i);
+}
 
 
 setTimeout(function 콜백함수(){
     // bonus number 표시
-    var result_bonus = document.querySelector('.bonus')[0];
+    var result_bonus = document.querySelector('.bonus');
     ball_style(bonus_number,result_bonus);
 }, 7000); // 1000ms = 1s   
