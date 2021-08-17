@@ -12,11 +12,21 @@
             border: 1px solid black;
             width: 20px;
             height: 20px;
+            text-align: center;
+            line-height: 20px;
+            background: #222;
         }
 
-        #timer {
-            background: white;
+        td.opened{
+            background: wheat;
         }
+        td.flag{
+            background: red;
+        }
+        td.question{
+            background: orange;
+        }
+        
     </style>
 </head>
 <body>
@@ -27,13 +37,14 @@
     <button id="exec">실행</button>
     
     <table id="table">
-        <thead>
+        <!-- <thead>
             <tr>
                 <td><span id="timer">0</span>/sec</td>
             </tr>
-        </thead>
+        </thead> -->
         <tbody></tbody>
     </table>
+    <div id="result"></div>
     <script src="mine.js"></script>
 </body>
 </html>
