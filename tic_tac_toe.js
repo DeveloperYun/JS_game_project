@@ -63,6 +63,9 @@ function 초기화(무승부) { // 초기화
 //익명으로 쓸 함수를 빼내서 간결성 높임
 //2차원 배열
 var clickFunc = function(e){
+    if(turn ==='O'){
+        return; // comp의 턴일 때 클릭 방지
+    }
     // console.log(e.target); // 이벤트 발생 요소 반환=>콘솔창 출력해줌
     // console.log(e.target.parentNode); // 이벤트 발생 요소 부모 반환
 
