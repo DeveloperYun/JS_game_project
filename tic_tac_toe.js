@@ -4,7 +4,7 @@ var lines = [];
 var cells = [];
 var turn = 'X'; // X가 선공
 var result = document.createElement('div');
-
+//
 function 결과확인(line_idx,cols_idx){
     //틱택토가 완성됐는지(세칸이 다 채워졌는지) 확인하는 부분 (노가다)
         // 1. 가로 빙고 검사
