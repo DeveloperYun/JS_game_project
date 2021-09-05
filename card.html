@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
+        /* card > card-inner flipped > card-front, card-back */
         .card {
             display: inline-block;
             margin-right: 20px;
@@ -22,6 +23,7 @@
             transform-style: preserve-3d;
         }
 
+        /* card의 자식인 flipped와 card-inner 중 card-inner를 선택 */
         .card.flipped .card-inner {
             transform: rotateY(180deg);
         }
